@@ -1,69 +1,125 @@
 ﻿using System;
 
-namespace QuantidadeTermosSequencia
+namespace SequenciaNumeros
 {
     class Program
     {
         static void Main(string[] args)
-        {
-            int quantidadeTermos, n;
+        {   int number1, number2, aux;
 
-            Console.WriteLine("Exemplo 01 - Quantidade de termos em uma sequência.\n");
+            Console.WriteLine("Exemplo 00 - Uso do Auxiliar.\nSequências de números.\n");
 
-            Console.Write("Digite uma quantidade de termos: ");
-            quantidadeTermos = int.Parse(Console.ReadLine());
+            Console.Write("Digite o primeiro termo: ");
+            number1 = int.Parse(Console.ReadLine());
 
-            /* SEQUÊNCIA PADRÃO */
-            Console.WriteLine("");
-            for(int i = 1; i <= quantidadeTermos; i++)
+            Console.Write("Digite o segundo termo: ");
+            number2 = int.Parse(Console.ReadLine());
+
+            if(number1 > number2) //! "Se number1 for maior que number2" o auxiliar troca o valor das duas variáveis.
             {
-                Console.Write("{0} ",i);
+                aux = number1;
+                number1 = number2;
+                number2 = aux;
+            } //! Sem a utilização do auxiliar a condição do 'for' abaixo será falsa e o código não vai funcionar.
+
+            /* SEQUÊNCIA CRESCENTE DE NÚMEROS PARES */
+            Console.WriteLine("");
+            for(int i = number1; i <= number2; i++)
+            {
+                if(i % 2 == 0) //! Imprime apenas números múltiplos de 2, ou seja, pares.
+                {
+                    Console.Write("{0} ",i);
+                }
             }
-            Console.WriteLine("- Sequência Padrão.");
-            /* FIM DA SEQUÊNCIA PADRÃO */
+            Console.WriteLine("- Sequência crescente de pares.");
+            /* FIM DA SEQUÊNCIA CRESCENTE DE NÚMEROS PARES */
+         
 
-
-            /* SEQUÊNCIA PADRÃO INVERTIDA(DECRESCENTE)*/
+            /* SEQUÊNCIA DECRESCENTE DE NÚMEROS PARES */
             Console.WriteLine("");
-            for(int i = quantidadeTermos; i >= 1; i--)
+            for(int i = number2; i >= number1; i--)
             {
-                Console.Write("{0} ",i);
+                if(i % 2 == 0)
+                {
+                    Console.Write("{0} ",i);
+                }
             }
-            Console.WriteLine("- Sequência Padrão invertida.");
-            /* FIM DA SEQUÊNCIA PADRÃO INVERTIDA */
+            Console.WriteLine("- Sequência decrescente de pares.");
+            /*FIM DA SEQUÊNCIA DECRESCENTE DE NÚMEROS PARES */
 
 
-            /* SEQUÊNCIA DE MÚLTIPLOS DE 'n' */
-            Console.Write("\nDigite um valor para 'n': ");
-            n = int.Parse(Console.ReadLine());
+            /* SEQUÊNCIA CRESCENTE DE NÚMEROS ÍMPARES */
+            Console.WriteLine("");
+            for (int i = number1; i <= number2; i++)
+            {
+                if(i % 2 != 0) //! Imprime apenas números ímpares.
+                {
+                    Console.Write("{0} ",i);
+                }
+            }
+            Console.WriteLine("- Sequência crescente de ímpares.");
+            /* FIM DA SEQUÊNCIA CRESCENTE DE NÚMEROS ÍMPARES */
+
+
+            /* SEQUÊNCIA DECRESCENTE DE NÚMEROS ÍMPARES */
+            Console.WriteLine("");
+            for(int i = number2; i >= number1; i--)
+            {
+                if(i % 2 != 0)
+                {
+                    Console.Write("{0} ",i);
+                }
+            }Console.WriteLine("- Sequência decrescente de ímpares.");
+            /* FIM DA SEQUÊNCIA DECRESCENTE DE NÚMEROS ÍMPARES */
+
+
+            /* SEQUÊNCIA CRESCENTE DE NÚMEROS PARES VERDES, ÍMPARES VERMELHOS*/ //! Não recomendo usar na prova.
 
             Console.WriteLine("");
-            for(int i = 1; i <= quantidadeTermos; i++)
+            for(int i = number1; i <= number2; i++)
             {
-                if(i % n == 0)
+                if(i % 2 == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green; 
+                    Console.Write("{0} ",i);
+                    Console.ResetColor();
+                }else{
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("{0} ",i);
+                    Console.ResetColor();
+                }
+            }
+            Console.WriteLine("- Pares verdes, ímpares vermelhos.");
+            /* FIM DA SEQUÊNCIA CRESCENTE DE NÚMEROS PARES VERDES, ÍMPARES VERMELHOS*/
+
+
+            /* SEQUÊNCIA CRESCENTE, ÍMPARES SUBSTITUIDOS POR 'X' */
+            Console.WriteLine("");
+            for(int i = number1; i <= number2; i++)
+            {
+                if(i % 2 == 0)
                 {
                     Console.Write("{0} ",i);
                 }
                 else{
-                    quantidadeTermos++;
+                    Console.Write("X ");
                 }
             }
-            Console.WriteLine("- Sequência de múltiplos de 'n'.");
-            /*FIM SEQUÊNCIA DE MÚLTIPLOS DE 'n' */
+            Console.WriteLine("- Ímpares substituidos por 'X'.");
+            /* FIM DA SEQUÊNCIA CRESCENTE, ÍMPARES SUBSTITUIDOS POR 'X' */  
 
 
-            //! Essa sequência invertida depende da sequência multíplos de 'n'.
-            /* SEQUÊNCIA DE MÚLTIPLOS DE 'n' INVERTIDA*/
+            /* SEQUÊNCIA DE MÚLTIPLOS DE 5 */
             Console.WriteLine("");
-            for(int i = quantidadeTermos; i >= 1; i--)
+            for(int i = number1; i <= number2; i++)
             {
-                if(i % n == 0)
+                if(i % 5 == 0) //! Pode ser usada para identificar múltiplos de qualquer número.
                 {
                     Console.Write("{0} ",i);
                 }
             }
-            Console.WriteLine("- Sequência de múltiplos de 'n' invertida.");
-            /* FIM DA SEQUÊNCIA DE MÚLTIPLOS DE 'n' INVERTIDA*/
+            Console.WriteLine("- Múltiplos de 5.");
+            /* FIM DA SEQUÊNCIA DE MÚLTIPLOS DE 3 */
         }
     }
 }
